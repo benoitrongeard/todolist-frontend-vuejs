@@ -1,5 +1,5 @@
-import { mount } from 'vue-test-utils'
-import Login from '@components/auth/Login.vue'
+import { RouterLinkStub, shallowMount } from '@vue/test-utils'
+import Login from '@components/auth/Login'
 import expect from 'expect'
 import Form from '@utils/Form'
 
@@ -8,7 +8,11 @@ describe('Login', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = mount(Login)
+    wrapper = shallowMount(Login, {
+      stubs: {
+        RouterLink: RouterLinkStub
+      }
+    })
   })
 
   it('does not contain error alert', () => {
